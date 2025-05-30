@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Start Quiz</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <style>
+    body {
+      background-color: #f2f2f2;
+    }
+    .quiz-box {
+      max-width: 700px;
+      margin: 3rem auto;
+      background: #ffffff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    .hidden {
+      display: none;
+    }
+    .timer {
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: #d9534f;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container quiz-box">
+  <h3 class="text-center mb-4">📝 Aptitude Quiz</h3>
+  <div class="text-end timer" id="timer">Time Left: 10s</div>
+
+  <form id="quizForm">
+    <div class="question mb-4" id="q1">
+      <p><strong>1. A shopkeeper gives 10% discount on a ₹200 article and still gains 10%. What is the cost price?</strong></p>
+      <input type="radio" name="q1" value="₹160"> ₹160<br>
+      <input type="radio" name="q1" value="₹170"> ₹170<br>
+      <input type="radio" name="q1" value="₹180"> ₹180<br>
+      <input type="radio" name="q1" value="₹150"> ₹150
+    </div>
+
+    <div class="question mb-4 hidden" id="q2">
+      <p><strong>2. If ‘A + B’ means ‘A is the mother of B’, and ‘A × B’ means ‘A is the sister of B’, then what does ‘P + Q × R’ mean?</strong></p>
+      <input type="radio" name="q2" value="P is the aunt of R"> P is the aunt of R<br>
+      <input type="radio" name="q2" value="Q is the sister of R"> Q is the sister of R<br>
+      <input type="radio" name="q2" value="P is the mother of Q"> P is the mother of Q<br>
+      <input type="radio" name="q2" value="Q is the daughter of R"> Q is the daughter of R
+    </div>
+
+    <div class="question mb-4 hidden" id="q3">
+      <p><strong>3. What will be the output of this code?<br><code>x = 3<br>y = x<br>x = 5<br>print(y)</code></strong></p>
+      <input type="radio" name="q3" value="3"> 3<br>
+      <input type="radio" name="q3" value="5"> 5<br>
+      <input type="radio" name="q3" value="Error"> Error<br>
+      <input type="radio" name="q3" value="None"> None
+    </div>
+
+    <div class="question mb-4 hidden" id="q4">
+      <p><strong>4. Which SQL clause is used to filter rows based on a condition?</strong></p>
+      <input type="radio" name="q4" value="GROUP BY"> GROUP BY<br>
+      <input type="radio" name="q4" value="ORDER BY"> ORDER BY<br>
+      <input type="radio" name="q4" value="HAVING"> HAVING<br>
+      <input type="radio" name="q4" value="WHERE"> WHERE
+    </div>
+
+    <div class="question mb-4 hidden" id="q5">
+      <p><strong>5. Which data structure is used for undo operations in text editors?</strong></p>
+      <input type="radio" name="q5" value="Queue"> Queue<br>
+      <input type="radio" name="q5" value="Stack"> Stack<br>
+      <input type="radio" name="q5" value="Tree"> Tree<br>
+      <input type="radio" name="q5" value="Graph"> Graph
+    </div>
+
+    <div class="question mb-4 hidden" id="q6">
+      <p><strong>6. Which of the following is not a type of scheduling algorithm?</strong></p>
+      <input type="radio" name="q6" value="Round Robin"> Round Robin<br>
+      <input type="radio" name="q6" value="First Come First Serve"> First Come First Serve<br>
+      <input type="radio" name="q6" value="Preemptive Scheduling"> Preemptive Scheduling<br>
+      <input type="radio" name="q6" value="Batch Allocation"> Batch Allocation
+    </div>
+
+    <div class="question mb-4 hidden" id="q7">
+      <p><strong>7. Which OOP concept means “one interface, many implementations”?</strong></p>
+      <input type="radio" name="q7" value="Inheritance"> Inheritance<br>
+      <input type="radio" name="q7" value="Encapsulation"> Encapsulation<br>
+      <input type="radio" name="q7" value="Abstraction"> Abstraction<br>
+      <input type="radio" name="q7" value="Polymorphism"> Polymorphism
+    </div>
+
+    <div class="question mb-4 hidden" id="q8">
+      <p><strong>8. Choose the correct sentence:</strong></p>
+      <input type="radio" name="q8" value="He don’t know the answer."> He don’t know the answer.<br>
+      <input type="radio" name="q8" value="He doesn’t knows the answer."> He doesn’t knows the answer.<br>
+      <input type="radio" name="q8" value="He doesn’t know the answer."> He doesn’t know the answer.<br>
+      <input type="radio" name="q8" value="He do not knows the answer."> He do not knows the answer.
+    </div>
+
+    <div class="question mb-4 hidden" id="q9">
+      <p><strong>9. What’s the best response to “What’s your biggest weakness?” in an interview?</strong></p>
+      <input type="radio" name="q9" value="I don’t have any."> I don’t have any.<br>
+      <input type="radio" name="q9" value="I’m a perfectionist."> I’m a perfectionist.<br>
+      <input type="radio" name="q9" value="I tend to procrastinate, but I’m working on using time-blocking to fix it."> I tend to procrastinate, but I’m working on using time-blocking to fix it.<br>
+      <input type="radio" name="q9" value="I get bored easily."> I get bored easily.
+    </div>
+
+    <div class="question mb-4 hidden" id="q10">
+      <p><strong>10. How many times will print("Hi") run?<br><code>for i in range(1, 5):<br> &nbsp;&nbsp;for j in range(1, 3):<br> &nbsp;&nbsp;&nbsp;&nbsp;print("Hi")</code></strong></p>
+      <input type="radio" name="q10" value="5"> 5<br>
+      <input type="radio" name="q10" value="6"> 6<br>
+      <input type="radio" name="q10" value="8"> 8<br>
+      <input type="radio" name="q10" value="12"> 12
+    </div>
+
+    <button type="submit" class="btn btn-success mt-3 hidden" id="submitBtn">Submit Quiz</button>
+  </form>
+
+  <div id="result" class="hidden mt-4 text-center">
+    <h4 id="scoreText" class="mb-3"></h4>
+    <p id="feedback" class="fw-bold"></p>
+    <button class="btn btn-primary mt-3" onclick="location.reload()">Take Quiz Again</button>
+  </div>
+</div>
+
+<script>
+  const correctAnswers = {
+    q1: "₹160",
+    q2: "P is the mother of Q",
+    q3: "3",
+    q4: "WHERE",
+    q5: "Stack",
+    q6: "Batch Allocation",
+    q7: "Polymorphism",
+    q8: "He doesn’t know the answer.",
+    q9: "I tend to procrastinate, but I’m working on using time-blocking to fix it.",
+    q10: "8"
+  };
+
+  let currentQuestion = 1;
+  const totalQuestions = 10;
+  let timer = 10;
+  let interval;
+
+  function showQuestion(index) {
+    document.querySelectorAll('.question').forEach(q => q.classList.add('hidden'));
+    const current = document.getElementById(`q${index}`);
+    if (current) current.classList.remove('hidden');
+
+    document.getElementById('submitBtn').classList.toggle('hidden', index !== totalQuestions);
+    resetTimer();
+  }
+
+  function resetTimer() {
+    clearInterval(interval);
+    timer = 10;
+    document.getElementById("timer").textContent = `Time Left: ${timer}s`;
+    interval = setInterval(() => {
+      timer--;
+      document.getElementById("timer").textContent = `Time Left: ${timer}s`;
+      if (timer === 0) {
+        clearInterval(interval);
+        nextQuestion();
+      }
+    }, 1000);
+  }
+
+  function nextQuestion() {
+    if (currentQuestion < totalQuestions) {
+      currentQuestion++;
+      showQuestion(currentQuestion);
+    } else {
+      document.getElementById("quizForm").requestSubmit();
+    }
+  }
+
+  showQuestion(currentQuestion);
+
+  document.getElementById('quizForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    clearInterval(interval);
+
+    let score = 0;
+    for (let question in correctAnswers) {
+      const selected = document.querySelector(`input[name="${question}"]:checked`);
+      if (selected && selected.value === correctAnswers[question]) {
+        score++;
+      }
+    }
+
+    document.getElementById('quizForm').classList.add('hidden');
+    document.getElementById('result').classList.remove('hidden');
+    document.getElementById('scoreText').textContent = `Your Score: ${score} / ${totalQuestions}`;
+
+    const feedback = document.getElementById('feedback');
+    if (score === totalQuestions) {
+      feedback.textContent = "Excellent! 🎉 You nailed it.";
+      feedback.style.color = "green";
+    } else if (score >= totalQuestions / 2) {
+      feedback.textContent = "Well done! 👍 You did good.";
+      feedback.style.color = "orange";
+    } else {
+      feedback.textContent = "Better luck next time! 💪 Keep practicing.";
+      feedback.style.color = "red";
+    }
+  });
+</script>
+
+</body>
+</html>

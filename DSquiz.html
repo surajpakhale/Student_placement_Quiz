@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Start Quiz</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <style>
+    body {
+      background-color: #f2f2f2;
+    }
+    .quiz-box {
+      max-width: 700px;
+      margin: 3rem auto;
+      background: #ffffff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    .hidden {
+      display: none;
+    }
+    .timer {
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: #d9534f;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container quiz-box">
+  <h3 class="text-center mb-4">🧠 Data Structures Quiz</h3>
+  <div class="text-end timer" id="timer">Time Left: 10s</div>
+
+  <form id="quizForm">
+    <!-- Questions -->
+    <div class="question mb-4" id="q1">
+      <p><strong>1. What is the time complexity to access an element in an array using the index?</strong></p>
+      <input type="radio" name="q1" value="O(1)"> O(1)<br>
+      <input type="radio" name="q1" value="O(n)"> O(n)<br>
+      <input type="radio" name="q1" value="O(log n)"> O(log n)<br>
+      <input type="radio" name="q1" value="O(n²)"> O(n²)
+    </div>
+
+    <div class="question mb-4 hidden" id="q2">
+      <p><strong>2. Which of the following is not true about a singly linked list?</strong></p>
+      <input type="radio" name="q2" value="It allows random access"> It allows random access<br>
+      <input type="radio" name="q2" value="It can grow dynamically"> It can grow dynamically<br>
+      <input type="radio" name="q2" value="Insertion is faster than arrays"> Insertion is faster than arrays<br>
+      <input type="radio" name="q2" value="It uses more memory than arrays"> It uses more memory than arrays
+    </div>
+
+    <div class="question mb-4 hidden" id="q3">
+      <p><strong>3. Which data structure uses LIFO (Last In First Out) principle?</strong></p>
+      <input type="radio" name="q3" value="Queue"> Queue<br>
+      <input type="radio" name="q3" value="Array"> Array<br>
+      <input type="radio" name="q3" value="Stack"> Stack<br>
+      <input type="radio" name="q3" value="Tree"> Tree
+    </div>
+
+    <div class="question mb-4 hidden" id="q4">
+      <p><strong>4. Which of the following queue types allows insertion at one end and deletion at the other?</strong></p>
+      <input type="radio" name="q4" value="Circular Queue"> Circular Queue<br>
+      <input type="radio" name="q4" value="Deque"> Deque<br>
+      <input type="radio" name="q4" value="Priority Queue"> Priority Queue<br>
+      <input type="radio" name="q4" value="Linear Queue"> Linear Queue
+    </div>
+
+    <div class="question mb-4 hidden" id="q5">
+      <p><strong>5. What is the maximum number of nodes in a binary tree of height h?</strong></p>
+      <input type="radio" name="q5" value="2^h"> 2^h<br>
+      <input type="radio" name="q5" value="2^h - 1"> 2^h - 1<br>
+      <input type="radio" name="q5" value="h"> h<br>
+      <input type="radio" name="q5" value="h²"> h²
+    </div>
+
+    <div class="question mb-4 hidden" id="q6">
+      <p><strong>6. What is the best-case time complexity of binary search?</strong></p>
+      <input type="radio" name="q6" value="O(n)"> O(n)<br>
+      <input type="radio" name="q6" value="O(log n)"> O(log n)<br>
+      <input type="radio" name="q6" value="O(1)"> O(1)<br>
+      <input type="radio" name="q6" value="O(n log n)"> O(n log n)
+    </div>
+
+    <div class="question mb-4 hidden" id="q7">
+      <p><strong>7. Which of these sorting algorithms has the worst-case time complexity of O(n²)?</strong></p>
+      <input type="radio" name="q7" value="Merge Sort"> Merge Sort<br>
+      <input type="radio" name="q7" value="Quick Sort"> Quick Sort<br>
+      <input type="radio" name="q7" value="Bubble Sort"> Bubble Sort<br>
+      <input type="radio" name="q7" value="Heap Sort"> Heap Sort
+    </div>
+
+    <div class="question mb-4 hidden" id="q8">
+      <p><strong>8. What is the primary advantage of using a hash table?</strong></p>
+      <input type="radio" name="q8" value="Sorted data"> Sorted data<br>
+      <input type="radio" name="q8" value="Constant-time search"> Constant-time search<br>
+      <input type="radio" name="q8" value="Easy implementation"> Easy implementation<br>
+      <input type="radio" name="q8" value="Uses less memory"> Uses less memory
+    </div>
+
+    <div class="question mb-4 hidden" id="q9">
+      <p><strong>9. What data structure is commonly used for Breadth-First Search (BFS) in graphs?</strong></p>
+      <input type="radio" name="q9" value="Stack"> Stack<br>
+      <input type="radio" name="q9" value="Queue"> Queue<br>
+      <input type="radio" name="q9" value="Array"> Array<br>
+      <input type="radio" name="q9" value="Linked List"> Linked List
+    </div>
+
+    <div class="question mb-4 hidden" id="q10">
+      <p><strong>10. Which of the following problems is best solved using recursion?</strong></p>
+      <input type="radio" name="q10" value="Linear search"> Linear search<br>
+      <input type="radio" name="q10" value="Tower of Hanoi"> Tower of Hanoi<br>
+      <input type="radio" name="q10" value="Bubble sort"> Bubble sort<br>
+      <input type="radio" name="q10" value="Binary to decimal conversion"> Binary to decimal conversion
+    </div>
+
+    <button type="submit" class="btn btn-success mt-3 hidden" id="submitBtn">Submit Quiz</button>
+  </form>
+
+  <div id="result" class="hidden mt-4 text-center">
+    <h4 id="scoreText" class="mb-3"></h4>
+    <p id="feedback" class="fw-bold"></p>
+    <button class="btn btn-primary mt-3" onclick="location.reload()">Take Quiz Again</button>
+  </div>
+</div>
+
+<script>
+  const correctAnswers = {
+    q1: "O(1)",
+    q2: "It allows random access",
+    q3: "Stack",
+    q4: "Linear Queue",
+    q5: "2^h - 1",
+    q6: "O(1)",
+    q7: "Bubble Sort",
+    q8: "Constant-time search",
+    q9: "Queue",
+    q10: "Tower of Hanoi"
+  };
+
+  let currentQuestion = 1;
+  const totalQuestions = 10;
+  let timer = 10;
+  let interval;
+
+  function showQuestion(index) {
+    document.querySelectorAll('.question').forEach(q => q.classList.add('hidden'));
+    const current = document.getElementById(`q${index}`);
+    if (current) current.classList.remove('hidden');
+
+    document.getElementById('submitBtn').classList.toggle('hidden', index !== totalQuestions);
+    resetTimer();
+  }
+
+  function resetTimer() {
+    clearInterval(interval);
+    timer = 10;
+    document.getElementById("timer").textContent = `Time Left: ${timer}s`;
+    interval = setInterval(() => {
+      timer--;
+      document.getElementById("timer").textContent = `Time Left: ${timer}s`;
+      if (timer === 0) {
+        clearInterval(interval);
+        nextQuestion();
+      }
+    }, 1000);
+  }
+
+  function nextQuestion() {
+    if (currentQuestion < totalQuestions) {
+      currentQuestion++;
+      showQuestion(currentQuestion);
+    } else {
+      document.getElementById("quizForm").requestSubmit();
+    }
+  }
+
+  showQuestion(currentQuestion);
+
+  document.getElementById('quizForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    clearInterval(interval);
+
+    let score = 0;
+    for (let question in correctAnswers) {
+      const selected = document.querySelector(`input[name="${question}"]:checked`);
+      if (selected && selected.value === correctAnswers[question]) {
+        score++;
+      }
+    }
+
+    document.getElementById('quizForm').classList.add('hidden');
+    document.getElementById('result').classList.remove('hidden');
+    document.getElementById('scoreText').textContent = `Your Score: ${score} / ${totalQuestions}`;
+
+    const feedback = document.getElementById('feedback');
+    if (score === totalQuestions) {
+      feedback.textContent = "Excellent! 🎉 You nailed it.";
+      feedback.style.color = "green";
+    } else if (score >= totalQuestions / 2) {
+      feedback.textContent = "Well done! 👍 You did good.";
+      feedback.style.color = "orange";
+    } else {
+      feedback.textContent = "Better luck next time! 💪 Keep practicing.";
+      feedback.style.color = "red";
+    }
+  });
+</script>
+
+</body>
+</html>

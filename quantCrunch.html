@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Start Quiz</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <style>
+    body {
+      background-color: #f2f2f2;
+    }
+    .quiz-box {
+      max-width: 700px;
+      margin: 3rem auto;
+      background: #ffffff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    .hidden {
+      display: none;
+    }
+    .timer {
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: #d9534f;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container quiz-box">
+  <h3 class="text-center mb-4">📝 Aptitude Quiz</h3>
+  <div class="text-end timer" id="timer">Time Left: 10s</div>
+
+  <form id="quizForm">
+    <div class="question mb-4" id="q1">
+      <p><strong>1. What is 20% of 250 + 30% of 150?</strong></p>
+      <input type="radio" name="q1" value="100"> 100<br>
+      <input type="radio" name="q1" value="105"> 105<br>
+      <input type="radio" name="q1" value="110"> 110<br>
+      <input type="radio" name="q1" value="115"> 115
+    </div>
+
+    <div class="question mb-4 hidden" id="q2">
+      <p><strong>2. A can do a job in 8 days, and B in 12 days. Working together, how many days will they take to complete it?</strong></p>
+      <input type="radio" name="q2" value="5"> 5<br>
+      <input type="radio" name="q2" value="4.8"> 4.8<br>
+      <input type="radio" name="q2" value="6.2"> 6.2<br>
+      <input type="radio" name="q2" value="7"> 7
+    </div>
+
+    <div class="question mb-4 hidden" id="q3">
+      <p><strong>3. An article is sold for ₹480 at a 20% loss. What is the cost price?</strong></p>
+      <input type="radio" name="q3" value="₹500"> ₹500<br>
+      <input type="radio" name="q3" value="₹560"> ₹560<br>
+      <input type="radio" name="q3" value="₹600"> ₹600<br>
+      <input type="radio" name="q3" value="₹620"> ₹620
+    </div>
+
+    <div class="question mb-4 hidden" id="q4">
+      <p><strong>4. What is the simple interest on ₹6000 at 5% per annum in 3 years?</strong></p>
+      <input type="radio" name="q4" value="₹750"> ₹750<br>
+      <input type="radio" name="q4" value="₹900"> ₹900<br>
+      <input type="radio" name="q4" value="₹1000"> ₹1000<br>
+      <input type="radio" name="q4" value="₹1100"> ₹1100
+    </div>
+
+    <div class="question mb-4 hidden" id="q5">
+      <p><strong>5. The ratio of A to B is 3:4. If A is 60, what is B?</strong></p>
+      <input type="radio" name="q5" value="70"> 70<br>
+      <input type="radio" name="q5" value="75"> 75<br>
+      <input type="radio" name="q5" value="80"> 80<br>
+      <input type="radio" name="q5" value="90"> 90
+    </div>
+
+    <div class="question mb-4 hidden" id="q6">
+      <p><strong>6. The average of 6 numbers is 45. If one number is removed, the average becomes 42. What was the number removed?</strong></p>
+      <input type="radio" name="q6" value="57"> 57<br>
+      <input type="radio" name="q6" value="60"> 60<br>
+      <input type="radio" name="q6" value="63"> 63<br>
+      <input type="radio" name="q6" value="66"> 66
+    </div>
+
+    <div class="question mb-4 hidden" id="q7">
+      <p><strong>7. A train 180 meters long crosses a pole in 15 seconds. What is its speed in km/h?</strong></p>
+      <input type="radio" name="q7" value="36"> 36<br>
+      <input type="radio" name="q7" value="42"> 42<br>
+      <input type="radio" name="q7" value="45"> 45<br>
+      <input type="radio" name="q7" value="48"> 48
+    </div>
+
+    <div class="question mb-4 hidden" id="q8">
+      <p><strong>8. Find the least number which when divided by 6, 8, and 10 leaves a remainder of 5.</strong></p>
+      <input type="radio" name="q8" value="115"> 115<br>
+      <input type="radio" name="q8" value="125"> 125<br>
+      <input type="radio" name="q8" value="165"> 165<br>
+      <input type="radio" name="q8" value="205"> 205
+    </div>
+
+    <div class="question mb-4 hidden" id="q9">
+      <p><strong>9. In what ratio should water be mixed with milk so that the mixture is 20% water?</strong></p>
+      <input type="radio" name="q9" value="1:4"> 1:4<br>
+      <input type="radio" name="q9" value="1:3"> 1:3<br>
+      <input type="radio" name="q9" value="1:5"> 1:5<br>
+      <input type="radio" name="q9" value="2:5"> 2:5
+    </div>
+
+    <div class="question mb-4 hidden" id="q10">
+      <p><strong>10. Solve: If 3x + 2 = 17, then x = ?</strong></p>
+      <input type="radio" name="q10" value="4"> 4<br>
+      <input type="radio" name="q10" value="5"> 5<br>
+      <input type="radio" name="q10" value="6"> 6<br>
+      <input type="radio" name="q10" value="7"> 7
+    </div>
+
+    <button type="submit" class="btn btn-success mt-3 hidden" id="submitBtn">Submit Quiz</button>
+  </form>
+
+  <div id="result" class="hidden mt-4 text-center">
+    <h4 id="scoreText" class="mb-3"></h4>
+    <p id="feedback" class="fw-bold"></p>
+    <button class="btn btn-primary mt-3" onclick="location.reload()">Take Quiz Again</button>
+  </div>
+</div>
+
+<script>
+  const correctAnswers = {
+    q1: "105",
+    q2: "4.8",
+    q3: "₹600",
+    q4: "₹900",
+    q5: "80",
+    q6: "63",
+    q7: "43.2",
+    q8: "205",
+    q9: "1:4",
+    q10: "5"
+  };
+
+  let currentQuestion = 1;
+  const totalQuestions = 10;
+  let timer = 10;
+  let interval;
+
+  function showQuestion(index) {
+    document.querySelectorAll('.question').forEach(q => q.classList.add('hidden'));
+    const current = document.getElementById(`q${index}`);
+    if (current) current.classList.remove('hidden');
+
+    document.getElementById('submitBtn').classList.toggle('hidden', index !== totalQuestions);
+    resetTimer();
+  }
+
+  function resetTimer() {
+    clearInterval(interval);
+    timer = 10;
+    document.getElementById("timer").textContent = `Time Left: ${timer}s`;
+    interval = setInterval(() => {
+      timer--;
+      document.getElementById("timer").textContent = `Time Left: ${timer}s`;
+      if (timer === 0) {
+        clearInterval(interval);
+        nextQuestion();
+      }
+    }, 1000);
+  }
+
+  function nextQuestion() {
+    if (currentQuestion < totalQuestions) {
+      currentQuestion++;
+      showQuestion(currentQuestion);
+    } else {
+      document.getElementById("quizForm").requestSubmit();
+    }
+  }
+
+  showQuestion(currentQuestion);
+
+  document.getElementById('quizForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    clearInterval(interval);
+
+    let score = 0;
+    for (let question in correctAnswers) {
+      const selected = document.querySelector(`input[name="${question}"]:checked`);
+      if (selected && selected.value === correctAnswers[question]) {
+        score++;
+      }
+    }
+
+    document.getElementById('quizForm').classList.add('hidden');
+    document.getElementById('result').classList.remove('hidden');
+    document.getElementById('scoreText').textContent = `Your Score: ${score} / ${totalQuestions}`;
+
+    const feedback = document.getElementById('feedback');
+    if (score === totalQuestions) {
+      feedback.textContent = "Excellent! 🎉 You nailed it.";
+      feedback.style.color = "green";
+    } else if (score >= totalQuestions / 2) {
+      feedback.textContent = "Well done! 👍 You did good.";
+      feedback.style.color = "orange";
+    } else {
+      feedback.textContent = "Better luck next time! 💪 Keep practicing.";
+      feedback.style.color = "red";
+    }
+  });
+</script>
+
+</body>
+</html>

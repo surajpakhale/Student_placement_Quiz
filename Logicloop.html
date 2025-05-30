@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Start Quiz</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <style>
+    body {
+      background-color: #f2f2f2;
+    }
+    .quiz-box {
+      max-width: 700px;
+      margin: 3rem auto;
+      background: #ffffff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    .hidden {
+      display: none;
+    }
+    .timer {
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: #d9534f;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container quiz-box">
+  <h3 class="text-center mb-4">📝 Apptitude  Quizes</h3>
+  <div class="text-end timer" id="timer">Time Left: 10s</div>
+
+  <form id="quizForm">
+    <!-- Questions -->
+    <div class="question mb-4" id="q1">
+  <p><strong>1. What is the output of 3 + "3" in JavaScript?</strong></p>
+  <input type="radio" name="q1" value="6"> 6<br>
+  <input type="radio" name="q1" value="33"> 33<br>
+  <input type="radio" name="q1" value="undefined"> undefined<br>
+  <input type="radio" name="q1" value="NaN"> NaN
+</div>
+
+<div class="question mb-4 hidden" id="q2">
+  <p><strong>2. What does CSS stand for?</strong></p>
+  <input type="radio" name="q2" value="Creative Style Sheets"> Creative Style Sheets<br>
+  <input type="radio" name="q2" value="Cascading Style Sheets"> Cascading Style Sheets<br>
+  <input type="radio" name="q2" value="Computer Style Sheets"> Computer Style Sheets<br>
+  <input type="radio" name="q2" value="Colorful Style Sheets"> Colorful Style Sheets
+</div>
+
+<div class="question mb-4 hidden" id="q3">
+  <p><strong>3. Inside which HTML element do we put JavaScript?</strong></p>
+  <input type="radio" name="q3" value="<javascript>">&lt;javascript&gt;<br>
+  <input type="radio" name="q3" value="<script>">&lt;script&gt;<br>
+  <input type="radio" name="q3" value="<js>">&lt;js&gt;<br>
+  <input type="radio" name="q3" value="<scripting>">&lt;scripting&gt;
+</div>
+
+<div class="question mb-4 hidden" id="q4">
+  <p><strong>4. What is the output of typeof null in JavaScript?</strong></p>
+  <input type="radio" name="q4" value="null"> null<br>
+  <input type="radio" name="q4" value="object"> object<br>
+  <input type="radio" name="q4" value="undefined"> undefined<br>
+  <input type="radio" name="q4" value="boolean"> boolean
+</div>
+
+<div class="question mb-4 hidden" id="q5">
+  <p><strong>5. Which method is used to convert JSON data to a JavaScript object?</strong></p>
+  <input type="radio" name="q5" value="JSON.stringify"> JSON.stringify<br>
+  <input type="radio" name="q5" value="JSON.parse"> JSON.parse<br>
+  <input type="radio" name="q5" value="JSON.convert"> JSON.convert<br>
+  <input type="radio" name="q5" value="JSON.toObject"> JSON.toObject
+</div>
+
+<div class="question mb-4 hidden" id="q6">
+  <p><strong>6. Which HTML tag is used to create a hyperlink?</strong></p>
+  <input type="radio" name="q6" value="&lt;a&gt;"> &lt;a&gt;<br>
+  <input type="radio" name="q6" value="&lt;link&gt;"> &lt;link&gt;<br>
+  <input type="radio" name="q6" value="&lt;href&gt;"> &lt;href&gt;<br>
+  <input type="radio" name="q6" value="&lt;hyper&gt;"> &lt;hyper&gt;
+</div>
+
+<div class="question mb-4 hidden" id="q7">
+  <p><strong>7. Which JavaScript keyword is used to declare a constant?</strong></p>
+  <input type="radio" name="q7" value="var"> var<br>
+  <input type="radio" name="q7" value="let"> let<br>
+  <input type="radio" name="q7" value="const"> const<br>
+  <input type="radio" name="q7" value="static"> static
+</div>
+
+<div class="question mb-4 hidden" id="q8">
+  <p><strong>8. Which property is used in CSS to change text color?</strong></p>
+  <input type="radio" name="q8" value="font-color"> font-color<br>
+  <input type="radio" name="q8" value="text-color"> text-color<br>
+  <input type="radio" name="q8" value="color"> color<br>
+  <input type="radio" name="q8" value="background-color"> background-color
+</div>
+
+<div class="question mb-4 hidden" id="q9">
+  <p><strong>9. What is the correct way to write an array in JavaScript?</strong></p>
+  <input type="radio" name="q9" value="var colors = 'red', 'green', 'blue'"> var colors = 'red', 'green', 'blue'<br>
+  <input type="radio" name="q9" value="var colors = (1:'red', 2:'green', 3:'blue')"> var colors = (1:'red', 2:'green', 3:'blue')<br>
+  <input type="radio" name="q9" value="var colors = ['red', 'green', 'blue']"> var colors = ['red', 'green', 'blue']<br>
+  <input type="radio" name="q9" value="var colors = {red, green, blue}"> var colors = {red, green, blue}
+</div>
+
+<div class="question mb-4 hidden" id="q10">
+  <p><strong>10. What is the default value of an uninitialized variable in JavaScript?</strong></p>
+  <input type="radio" name="q10" value="null"> null<br>
+  <input type="radio" name="q10" value="undefined"> undefined<br>
+  <input type="radio" name="q10" value="0"> 0<br>
+  <input type="radio" name="q10" value="NaN"> NaN
+</div>
+
+
+    <button type="submit" class="btn btn-success mt-3 hidden" id="submitBtn">Submit Quiz</button>
+  </form>
+
+  <div id="result" class="hidden mt-4 text-center">
+    <h4 id="scoreText" class="mb-3"></h4>
+    <p id="feedback" class="fw-bold"></p>
+    <button class="btn btn-primary mt-3" onclick="location.reload()">Take Quiz Again</button>
+  </div>
+</div>
+
+<script>
+ const correctAnswers = {
+  q1: "33",
+  q2: "Cascading Style Sheets",
+  q3: "<script>",
+  q4: "object",
+  q5: "JSON.parse",
+  q6: "<a>",
+  q7: "const",
+  q8: "color",
+  q9: "var colors = ['red', 'green', 'blue']",
+  q10: "undefined"
+};
+
+
+  let currentQuestion = 1;
+  const totalQuestions = 10;
+  let timer = 10;
+  let interval;
+
+  function showQuestion(index) {
+    document.querySelectorAll('.question').forEach(q => q.classList.add('hidden'));
+    const current = document.getElementById(`q${index}`);
+    if (current) current.classList.remove('hidden');
+
+    document.getElementById('submitBtn').classList.toggle('hidden', index !== totalQuestions);
+    resetTimer();
+  }
+
+  function resetTimer() {
+    clearInterval(interval);
+    timer = 10;
+    document.getElementById("timer").textContent = `Time Left: ${timer}s`;
+    interval = setInterval(() => {
+      timer--;
+      document.getElementById("timer").textContent = `Time Left: ${timer}s`;
+      if (timer === 0) {
+        clearInterval(interval);
+        nextQuestion();
+      }
+    }, 1000);
+  }
+
+  function nextQuestion() {
+    if (currentQuestion < totalQuestions) {
+      currentQuestion++;
+      showQuestion(currentQuestion);
+    } else {
+      document.getElementById("quizForm").requestSubmit();
+    }
+  }
+
+  showQuestion(currentQuestion);
+
+  document.getElementById('quizForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    clearInterval(interval);
+
+    let score = 0;
+    for (let question in correctAnswers) {
+      const selected = document.querySelector(`input[name="${question}"]:checked`);
+      if (selected && selected.value === correctAnswers[question]) {
+        score++;
+      }
+    }
+
+    document.getElementById('quizForm').classList.add('hidden');
+    document.getElementById('result').classList.remove('hidden');
+    document.getElementById('scoreText').textContent = `Your Score: ${score} / ${totalQuestions}`;
+
+    const feedback = document.getElementById('feedback');
+    if (score === totalQuestions) {
+      feedback.textContent = "Excellent! 🎉 You nailed it.";
+      feedback.style.color = "green";
+    } else if (score >= totalQuestions / 2) {
+      feedback.textContent = "Well done! 👍 You did good.";
+      feedback.style.color = "orange";
+    } else {
+      feedback.textContent = "Better luck next time! 💪 Keep practicing.";
+      feedback.style.color = "red";
+    }
+  });
+</script>
+
+</body>
+</html>

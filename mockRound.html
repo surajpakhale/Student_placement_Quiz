@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Start Quiz</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <style>
+    body {
+      background-color: #f2f2f2;
+    }
+    .quiz-box {
+      max-width: 700px;
+      margin: 3rem auto;
+      background: #ffffff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    .hidden {
+      display: none;
+    }
+    .timer {
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: #d9534f;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container quiz-box">
+  <h3 class="text-center mb-4">📝 Apptitude Quizes</h3>
+  <div class="text-end timer" id="timer">Time Left: 10s</div>
+
+  <form id="quizForm">
+    <!-- Questions -->
+    <div class="question mb-4" id="q1">
+      <p><strong>1. A man can complete a task in 12 days. After working for 4 days, he is joined by another who can do the job in 6 days. How many total days will the work take to complete?</strong></p>
+      <input type="radio" name="q1" value="6"> 6<br>
+      <input type="radio" name="q1" value="8"> 8<br>
+      <input type="radio" name="q1" value="9"> 9<br>
+      <input type="radio" name="q1" value="10"> 10
+    </div>
+
+    <div class="question mb-4 hidden" id="q2">
+      <p><strong>2. What comes next in the series: 1, 4, 9, 16, 25, ?</strong></p>
+      <input type="radio" name="q2" value="35"> 35<br>
+      <input type="radio" name="q2" value="36"> 36<br>
+      <input type="radio" name="q2" value="30"> 30<br>
+      <input type="radio" name="q2" value="32"> 32
+    </div>
+
+    <div class="question mb-4 hidden" id="q3">
+      <p><strong>3. Choose the correctly spelled word:</strong></p>
+      <input type="radio" name="q3" value="Recomendation"> Recomendation<br>
+      <input type="radio" name="q3" value="Reccommendation"> Reccommendation<br>
+      <input type="radio" name="q3" value="Recommendation"> Recommendation<br>
+      <input type="radio" name="q3" value="Recomenddation"> Recomenddation
+    </div>
+
+    <div class="question mb-4 hidden" id="q4">
+      <p><strong>4. What is the output of:<br>int a = 5;<br>printf("%d", a++ + ++a);</strong></p>
+      <input type="radio" name="q4" value="10"> 10<br>
+      <input type="radio" name="q4" value="11"> 11<br>
+      <input type="radio" name="q4" value="12"> 12<br>
+      <input type="radio" name="q4" value="Undefined"> Undefined
+    </div>
+
+    <div class="question mb-4 hidden" id="q5">
+      <p><strong>5. Which data structure is used in function call management (runtime stack)?</strong></p>
+      <input type="radio" name="q5" value="Queue"> Queue<br>
+      <input type="radio" name="q5" value="Heap"> Heap<br>
+      <input type="radio" name="q5" value="Stack"> Stack<br>
+      <input type="radio" name="q5" value="Array"> Array
+    </div>
+
+    <div class="question mb-4 hidden" id="q6">
+      <p><strong>6. What is the worst-case time complexity of Quick Sort?</strong></p>
+      <input type="radio" name="q6" value="O(n log n)"> O(n log n)<br>
+      <input type="radio" name="q6" value="O(n²)"> O(n²)<br>
+      <input type="radio" name="q6" value="O(log n)"> O(log n)<br>
+      <input type="radio" name="q6" value="O(n)"> O(n)
+    </div>
+
+    <div class="question mb-4 hidden" id="q7">
+      <p><strong>7. Which of the following ensures uniqueness in a relational database table?</strong></p>
+      <input type="radio" name="q7" value="Index"> Index<br>
+      <input type="radio" name="q7" value="Foreign Key"> Foreign Key<br>
+      <input type="radio" name="q7" value="Primary Key"> Primary Key<br>
+      <input type="radio" name="q7" value="Trigger"> Trigger
+    </div>
+
+    <div class="question mb-4 hidden" id="q8">
+      <p><strong>8. Which scheduling algorithm gives minimum average waiting time?</strong></p>
+      <input type="radio" name="q8" value="FCFS"> FCFS<br>
+      <input type="radio" name="q8" value="Round Robin"> Round Robin<br>
+      <input type="radio" name="q8" value="SJF"> SJF (Shortest Job First)<br>
+      <input type="radio" name="q8" value="Priority Scheduling"> Priority Scheduling
+    </div>
+
+    <div class="question mb-4 hidden" id="q9">
+      <p><strong>9. In OOP, what does encapsulation mean?</strong></p>
+      <input type="radio" name="q9" value="Reusing code"> Reusing code<br>
+      <input type="radio" name="q9" value="Wrapping data and code"> Wrapping data and code<br>
+      <input type="radio" name="q9" value="Polymorphic behavior"> Polymorphic behavior<br>
+      <input type="radio" name="q9" value="Inheritance hierarchy"> Inheritance hierarchy
+    </div>
+
+    <div class="question mb-4 hidden" id="q10">
+      <p><strong>10. What is the most effective way to answer “Tell me about yourself” in an interview?</strong></p>
+      <input type="radio" name="q10" value="Talk only about hobbies"> Talk only about hobbies<br>
+      <input type="radio" name="q10" value="Recite your resume"> Recite your resume<br>
+      <input type="radio" name="q10" value="Give a summary focusing on education, experience & goals"> Give a summary focusing on education, experience & goals<br>
+      <input type="radio" name="q10" value="Speak casually without structure"> Speak casually without structure
+    </div>
+
+    <button type="submit" class="btn btn-success mt-3 hidden" id="submitBtn">Submit Quiz</button>
+  </form>
+
+  <div id="result" class="hidden mt-4 text-center">
+    <h4 id="scoreText" class="mb-3"></h4>
+    <p id="feedback" class="fw-bold"></p>
+    <button class="btn btn-primary mt-3" onclick="location.reload()">Take Quiz Again</button>
+  </div>
+</div>
+
+<script>
+  const correctAnswers = {
+    q1: "8",
+    q2: "36",
+    q3: "Recommendation",
+    q4: "12",
+    q5: "Stack",
+    q6: "O(n²)",
+    q7: "Primary Key",
+    q8: "SJF",
+    q9: "Wrapping data and code",
+    q10: "Give a summary focusing on education, experience & goals"
+  };
+
+  let currentQuestion = 1;
+  const totalQuestions = 10;
+  let timer = 10;
+  let interval;
+
+  function showQuestion(index) {
+    document.querySelectorAll('.question').forEach(q => q.classList.add('hidden'));
+    const current = document.getElementById(`q${index}`);
+    if (current) current.classList.remove('hidden');
+
+    document.getElementById('submitBtn').classList.toggle('hidden', index !== totalQuestions);
+    resetTimer();
+  }
+
+  function resetTimer() {
+    clearInterval(interval);
+    timer = 10;
+    document.getElementById("timer").textContent = `Time Left: ${timer}s`;
+    interval = setInterval(() => {
+      timer--;
+      document.getElementById("timer").textContent = `Time Left: ${timer}s`;
+      if (timer === 0) {
+        clearInterval(interval);
+        nextQuestion();
+      }
+    }, 1000);
+  }
+
+  function nextQuestion() {
+    if (currentQuestion < totalQuestions) {
+      currentQuestion++;
+      showQuestion(currentQuestion);
+    } else {
+      document.getElementById("quizForm").requestSubmit();
+    }
+  }
+
+  showQuestion(currentQuestion);
+
+  document.getElementById('quizForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    clearInterval(interval);
+
+    let score = 0;
+    for (let question in correctAnswers) {
+      const selected = document.querySelector(`input[name="${question}"]:checked`);
+      if (selected && selected.value === correctAnswers[question]) {
+        score++;
+      }
+    }
+
+    document.getElementById('quizForm').classList.add('hidden');
+    document.getElementById('result').classList.remove('hidden');
+    document.getElementById('scoreText').textContent = `Your Score: ${score} / ${totalQuestions}`;
+
+    const feedback = document.getElementById('feedback');
+    if (score === totalQuestions) {
+      feedback.textContent = "Excellent! 🎉 You nailed it.";
+      feedback.style.color = "green";
+    } else if (score >= totalQuestions / 2) {
+      feedback.textContent = "Well done! 👍 You did good.";
+      feedback.style.color = "orange";
+    } else {
+      feedback.textContent = "Better luck next time! 💪 Keep practicing.";
+      feedback.style.color = "red";
+    }
+  });
+</script>
+
+</body>
+</html>

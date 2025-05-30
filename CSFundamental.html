@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Start Quiz</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <style>
+    body {
+      background-color: #f2f2f2;
+    }
+    .quiz-box {
+      max-width: 700px;
+      margin: 3rem auto;
+      background: #ffffff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    .hidden {
+      display: none;
+    }
+    .timer {
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: #d9534f;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container quiz-box">
+  <h3 class="text-center mb-4">📝 Technical Quiz</h3>
+  <div class="text-end timer" id="timer">Time Left: 10s</div>
+
+  <form id="quizForm">
+    <!-- Questions -->
+    <div class="question mb-4" id="q1">
+      <p><strong>1. What is thrashing in operating systems?</strong></p>
+      <input type="radio" name="q1" value="Process waiting for I/O"> Process waiting for I/O<br>
+      <input type="radio" name="q1" value="CPU idle due to no processes"> CPU idle due to no processes<br>
+      <input type="radio" name="q1" value="Excessive page swapping"> Excessive page swapping<br>
+      <input type="radio" name="q1" value="Deadlock due to memory"> Deadlock due to memory
+    </div>
+
+    <div class="question mb-4 hidden" id="q2">
+      <p><strong>2. Which layer in the OSI model is responsible for end-to-end delivery?</strong></p>
+      <input type="radio" name="q2" value="Network"> Network<br>
+      <input type="radio" name="q2" value="Transport"> Transport<br>
+      <input type="radio" name="q2" value="Session"> Session<br>
+      <input type="radio" name="q2" value="Application"> Application
+    </div>
+
+    <div class="question mb-4 hidden" id="q3">
+      <p><strong>3. What does ACID stand for in database systems?</strong></p>
+      <input type="radio" name="q3" value="Atomicity, Consistency, Isolation, Durability"> Atomicity, Consistency, Isolation, Durability<br>
+      <input type="radio" name="q3" value="Accuracy, Complexity, Integrity, Dependency"> Accuracy, Complexity, Integrity, Dependency<br>
+      <input type="radio" name="q3" value="Access, Checkpoint, Index, Delete"> Access, Checkpoint, Index, Delete<br>
+      <input type="radio" name="q3" value="None of the above"> None of the above
+    </div>
+
+    <div class="question mb-4 hidden" id="q4">
+      <p><strong>4. What is the full form of ALU?</strong></p>
+      <input type="radio" name="q4" value="Algorithmic Logic Unit"> Algorithmic Logic Unit<br>
+      <input type="radio" name="q4" value="Arithmetic Logic Unit"> Arithmetic Logic Unit<br>
+      <input type="radio" name="q4" value="Arithmetic Level Unit"> Arithmetic Level Unit<br>
+      <input type="radio" name="q4" value="Automated Logic Utility"> Automated Logic Utility
+    </div>
+
+    <div class="question mb-4 hidden" id="q5">
+      <p><strong>5. Which phase of the compiler performs syntax analysis?</strong></p>
+      <input type="radio" name="q5" value="Lexical Analyzer"> Lexical Analyzer<br>
+      <input type="radio" name="q5" value="Parser"> Parser<br>
+      <input type="radio" name="q5" value="Semantic Analyzer"> Semantic Analyzer<br>
+      <input type="radio" name="q5" value="Code Optimizer"> Code Optimizer
+    </div>
+
+    <div class="question mb-4 hidden" id="q6">
+      <p><strong>6. A binary heap is typically used to implement which data structure?</strong></p>
+      <input type="radio" name="q6" value="Stack"> Stack<br>
+      <input type="radio" name="q6" value="Queue"> Queue<br>
+      <input type="radio" name="q6" value="Priority Queue"> Priority Queue<br>
+      <input type="radio" name="q6" value="Hash Table"> Hash Table
+    </div>
+
+    <div class="question mb-4 hidden" id="q7">
+      <p><strong>7. Which of the following is not a software development life cycle (SDLC) model?</strong></p>
+      <input type="radio" name="q7" value="Waterfall"> Waterfall<br>
+      <input type="radio" name="q7" value="Spiral"> Spiral<br>
+      <input type="radio" name="q7" value="Agile"> Agile<br>
+      <input type="radio" name="q7" value="Turbo"> Turbo
+    </div>
+
+    <div class="question mb-4 hidden" id="q8">
+      <p><strong>8. Which language does a finite automaton accept?</strong></p>
+      <input type="radio" name="q8" value="Context-free"> Context-free<br>
+      <input type="radio" name="q8" value="Context-sensitive"> Context-sensitive<br>
+      <input type="radio" name="q8" value="Regular"> Regular<br>
+      <input type="radio" name="q8" value="Recursive"> Recursive
+    </div>
+
+    <div class="question mb-4 hidden" id="q9">
+      <p><strong>9. What type of attack involves intercepting communication between two parties?</strong></p>
+      <input type="radio" name="q9" value="Brute force"> Brute force<br>
+      <input type="radio" name="q9" value="DoS attack"> DoS attack<br>
+      <input type="radio" name="q9" value="Man-in-the-middle"> Man-in-the-middle<br>
+      <input type="radio" name="q9" value="Phishing"> Phishing
+    </div>
+
+    <div class="question mb-4 hidden" id="q10">
+      <p><strong>10. A solution to the critical section problem must satisfy:</strong></p>
+      <input type="radio" name="q10" value="Mutual Exclusion"> Mutual Exclusion<br>
+      <input type="radio" name="q10" value="Progress"> Progress<br>
+      <input type="radio" name="q10" value="Bounded Waiting"> Bounded Waiting<br>
+      <input type="radio" name="q10" value="All of the above"> All of the above
+    </div>
+
+    <button type="submit" class="btn btn-success mt-3 hidden" id="submitBtn">Submit Quiz</button>
+  </form>
+
+  <div id="result" class="hidden mt-4 text-center">
+    <h4 id="scoreText" class="mb-3"></h4>
+    <p id="feedback" class="fw-bold"></p>
+    <button class="btn btn-primary mt-3" onclick="location.reload()">Take Quiz Again</button>
+  </div>
+</div>
+
+<script>
+const correctAnswers = {
+  q1: "Excessive page swapping",
+  q2: "Transport",
+  q3: "Atomicity, Consistency, Isolation, Durability",
+  q4: "Arithmetic Logic Unit",
+  q5: "Parser",
+  q6: "Priority Queue",
+  q7: "Turbo",
+  q8: "Regular",
+  q9: "Man-in-the-middle",
+  q10: "All of the above"
+};
+
+let currentQuestion = 1;
+const totalQuestions = 10;
+let timer = 10;
+let interval;
+
+function showQuestion(index) {
+  document.querySelectorAll('.question').forEach(q => q.classList.add('hidden'));
+  const current = document.getElementById(`q${index}`);
+  if (current) current.classList.remove('hidden');
+
+  document.getElementById('submitBtn').classList.toggle('hidden', index !== totalQuestions);
+  resetTimer();
+}
+
+function resetTimer() {
+  clearInterval(interval);
+  timer = 10;
+  document.getElementById("timer").textContent = `Time Left: ${timer}s`;
+  interval = setInterval(() => {
+    timer--;
+    document.getElementById("timer").textContent = `Time Left: ${timer}s`;
+    if (timer === 0) {
+      clearInterval(interval);
+      nextQuestion();
+    }
+  }, 1000);
+}
+
+function nextQuestion() {
+  if (currentQuestion < totalQuestions) {
+    currentQuestion++;
+    showQuestion(currentQuestion);
+  } else {
+    document.getElementById("quizForm").requestSubmit();
+  }
+}
+
+showQuestion(currentQuestion);
+
+document.getElementById('quizForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  clearInterval(interval);
+
+  let score = 0;
+  for (let question in correctAnswers) {
+    const selected = document.querySelector(`input[name="${question}"]:checked`);
+    if (selected && selected.value === correctAnswers[question]) {
+      score++;
+    }
+  }
+
+  document.getElementById('quizForm').classList.add('hidden');
+  document.getElementById('result').classList.remove('hidden');
+  document.getElementById('scoreText').textContent = `Your Score: ${score} / ${totalQuestions}`;
+
+  const feedback = document.getElementById('feedback');
+  if (score === totalQuestions) {
+    feedback.textContent = "Excellent! 🎉 You nailed it.";
+    feedback.style.color = "green";
+  } else if (score >= totalQuestions / 2) {
+    feedback.textContent = "Well done! 👍 You did good.";
+    feedback.style.color = "orange";
+  } else {
+    feedback.textContent = "Better luck next time! 💪 Keep practicing.";
+    feedback.style.color = "red";
+  }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+body {
+      background-color: #f8f9fa;
+    }
+    .sidebar {
+      height: 100vh;
+      background: #343a40;
+      color: white;
+    }
+    .sidebar a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      padding: 1rem;
+    }
+    .sidebar a:hover {
+      background: #495057;
+    }
+    .card {
+      border: none;
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    /*Start_Quiz*/
+
+        .quiz-box {
+      max-width: 800px;
+      margin: 2rem auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .option-label:hover {
+      background-color: #f1f1f1;
+      cursor: pointer;
+    }
+    .hidden {
+      display: none;
+    }
+
+  
